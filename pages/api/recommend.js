@@ -17,7 +17,7 @@ export default async (req, res) => {
       q: title,
       type: 'movies', // Optional
       info: 1, // Optional
-      limit: 20, // Optional
+      limit: 15, // Optional
       verbose: 1 // Optional
     });
 
