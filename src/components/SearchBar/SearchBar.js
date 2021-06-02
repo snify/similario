@@ -136,7 +136,7 @@ const SearchBar = ({ placeholder, debounce = 300, ...rest }) => {
     let getTemplate = () => (
         <div className={styles.searchBarWrapper}>
             
-            <div className={[styles.searchbar, styles.borderGradient].join(' ')} >       
+            <div className={styles.searchbar}>       
                 <SearchIcon className={styles.searchIcon}></SearchIcon>
                 <input type="text" placeholder={placeholder} onChange={handleChange} value={ value || '' } onKeyDown={handleKeyDown} { ...rest }></input>
             </div>
