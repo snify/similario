@@ -42,7 +42,7 @@
 }
 
 .listItem img {
-    min-height: 100px;
+    min-height: 200px;
     width: 100%;    
 }
 
@@ -63,6 +63,7 @@
     padding-right: 0.5em;
     margin-right: 0.8em;
     color: white;
+    white-space: pre;
 }
 
 .listItem .tags span:nth-of-type(1) {
