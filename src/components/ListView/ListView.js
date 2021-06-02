@@ -16,7 +16,7 @@ const ListView = ({ ...rest }) => {
         let newWidth = vw / 1.6;
 
         if (vw < 800) {
-            newWidth = vw / 1.2;
+            newWidth = vw / 1.1;
         }        
 
         if (newHeight > newWidth) newHeight = newWidth;

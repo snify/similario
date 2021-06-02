@@ -5,7 +5,11 @@
 @media screen and (max-width: 640px) {
     .listItem {
       width: 100% !important;
-      margin-bottom: 5vh;
+      margin-bottom: 5vh !important;
+    }
+
+    .listItem span {
+        font-size: 11pt !important;
     }
 }
 
