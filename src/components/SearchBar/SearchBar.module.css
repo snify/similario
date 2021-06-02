@@ -1,6 +1,14 @@
 .searchBarWrapper {
     position: relative;
-    font-family: system-ui;
+    font-family: 
+        ui-sans-serif, 
+        system-ui, 
+        -system-ui, 
+        -apple-system,
+        BlinkMacSystemFont,
+        Roboto, Helvetica, Arial, 
+        sans-serif, 
+        "Apple Color Emoji";
     min-width: 25em;    
     font-size: 12pt;
     font-weight: 600;
@@ -26,7 +34,15 @@
 }
 
 .searchbar input {
-    font-family: system-ui;
+    font-family: 
+        ui-sans-serif, 
+        system-ui, 
+        -system-ui, 
+        -apple-system,
+        BlinkMacSystemFont,
+        Roboto, Helvetica, Arial, 
+        sans-serif, 
+        "Apple Color Emoji";
     font-size: 12pt;
     font-weight: 600;
     border: none;
@@ -121,6 +137,6 @@
     padding-left: 0.5em;
     padding-right: 0.5em;
     margin-right: 0.8em;
-    background: linear-gradient(to right, #602cb9, #c0388e);;
+    background: linear-gradient(to right, #602cb9, #c0388e);
     color: white;
 }

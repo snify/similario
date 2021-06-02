@@ -9,7 +9,16 @@
     margin: 1vw;
     width: 183px;    
     transition: 0.1s all ease-out;
-    font-family: system-ui;
+    
+    font-family: 
+        ui-sans-serif, 
+        system-ui, 
+        -system-ui, 
+        -apple-system,
+        BlinkMacSystemFont,
+        Roboto, Helvetica, Arial, 
+        sans-serif, 
+        "Apple Color Emoji";
     font-size: 12pt;
     font-weight: 600;
     box-shadow: 
