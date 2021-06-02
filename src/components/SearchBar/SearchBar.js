@@ -148,7 +148,7 @@ const SearchBar = ({ placeholder, debounce = 300, ...rest }) => {
                     
                     return (
                     <div key={key} onClick={() => handleSuggestionItemClick(key)} className={styles.suggestionsListItem + ' ' + (isItemSelected ? styles.selected : '')}>
-                        <span>{suggestion.year}</span>{suggestion.name}
+                        <span className={styles.year}>{suggestion.year}</span><span>{suggestion.name}</span>
                     </div>);
                 })}
             </div>}

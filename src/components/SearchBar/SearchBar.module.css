@@ -136,7 +136,8 @@
 /* .suggestionsListItem:not(:last-child) {
 } */
 
-.suggestionsListItem span {
+.suggestionsListItem .year {
+    float: left;
     font-weight: 400;
     font-size: 11pt;
     padding: 0.2em;
