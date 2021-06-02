@@ -12,6 +12,10 @@ a {
   text-decoration: none;
 }
 
+sup {
+  font-size: 12pt;
+}
+
 * {
   box-sizing: border-box;
   font-family: 

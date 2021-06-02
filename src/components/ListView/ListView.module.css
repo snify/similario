@@ -2,12 +2,19 @@
     padding-top: 10vh;
 }
 
+@media screen and (max-width: 640px) {
+    .listItem {
+      width: 100% !important;
+      margin-bottom: 5vh;
+    }
+}
+
 .listItem {
     cursor: default;
     display: inline-table;
     vertical-align: text-top;
     margin: 1vw;
-    width: 183px;    
+    width: 200px;    
     transition: 0.1s all ease-out;
     
     font-family: 

@@ -36,7 +36,7 @@ export default function Home() {
             Similario
           </h1>
           <h2 className={styles.subtitle}>
-            search similar movies online
+            search similar movies online<sup> (alpha)</sup>
           </h2>
         </div>
 
