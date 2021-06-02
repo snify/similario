@@ -66,13 +66,18 @@
     font-weight: 400;
 }
 
+.showingSimilarText {
+    text-align: center;
+    color: darkgrey;
+}
+
 .listItem .tags span {
     font-weight: 400;
     font-size: 9pt;
-    padding: 0.2em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    margin-right: 0.8em;
+    padding: 0.3em;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+    margin-right: 0.6em;
     color: white;
     white-space: pre;
 }

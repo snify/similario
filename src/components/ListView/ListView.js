@@ -25,8 +25,6 @@ const ListView = ({ ...rest }) => {
             content: (                
                 <iframe id="viewFrame" width={newWidth} height={newHeight}                
                     allow="autoplay;fullscreen"
-                    
-
                     src={ `https://www.youtube.com/embed/${youtube_id}?autoplay=1&mute=0&enablejsapi=1` }
                     frameBorder="0"
                 >
@@ -53,14 +51,11 @@ const ListView = ({ ...rest }) => {
         </div>);
     };
 
-    let getLoadingTemplate = () => {
-        return (<div>Loading...</div>);
-    }
 
     let getTemplate = () => {
         return (
         <div className={styles.listView}>
-            { search.loading && getLoadingTemplate() }
+            { search.loading ? <div className={styles.showingSimilarText}>Loading...</div> : search.searchValue && <div className={styles.showingSimilarText}>⎯   Movies similar to "{search.searchValue}"   ⎯</div> }
             {
                 Array.isArray(search.results) && search.results.length > 0 ? 
                 search.results.map((searchResult, index) => {
