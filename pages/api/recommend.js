@@ -70,9 +70,9 @@ export default async (req, res) => {
       };
     }));
 
-    results.sort((a, b) => {
-      return b.year - a.year;
-    })
+    // results.sort((a, b) => {
+    //   return b.year - a.year;
+    // })
 
     res.status(200).json(results);
 }
