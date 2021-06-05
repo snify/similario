@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Head from 'next/head'
 import SearchBar from '../src/components/SearchBar';
 import ListView from '../src/components/ListView';
 
 import styles from '../styles/Home.module.css'
 import { SearchProvider } from '../src/components/SearchContext';
+import YoutubeOverlayWithContext from '../src/components/YoutubeOverlay/YoutubeOverlayWithContext';
+import { OverlayProvider } from '../src/components/OverlayContext';
 
 export default function Home() {
   const [placeholder, setPlaceholder] = useState('');
@@ -17,7 +19,6 @@ export default function Home() {
 
     setPlaceholder(searchBarPlaceholder);
   }, []);
-
 
   return (
     <div className={styles.container}>
@@ -41,10 +42,13 @@ export default function Home() {
         </div>
 
         <br></br>
-
+        
         <SearchProvider>
           <SearchBar debounce={300} placeholder={placeholder}></SearchBar>
-          <ListView></ListView>
+          <OverlayProvider>
+            <ListView />
+            <YoutubeOverlayWithContext />
+          </OverlayProvider>
         </SearchProvider>
        
       </main>

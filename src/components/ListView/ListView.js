@@ -1,40 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './ListView.module.css';
-import { SearchContext } from '../SearchContext';
 import swal from '@sweetalert/with-react'
+import YoutubeOverlay from '../YoutubeOverlay';
+import { SearchContext } from '../SearchContext';
+import { OverlayContext } from '../OverlayContext';
 
-const ListView = ({ ...rest }) => {
+const ListView = ({ children, ...rest }) => {
     let [search, setSearch] = useContext(SearchContext);
+    let [youtubeId, setYoutubeId] = useContext(OverlayContext);
     
-    let handleListItemClick = async (youtube_id) => {
+    let handleListItemClick = (youtube_id) => {
         if (!youtube_id) return;
 
-        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-
-        let newHeight = vh / 1.3;        
-        let newWidth = vw / 1.6;
-
-        if (vw < 800) {
-            newWidth = vw / 1.1;
-        }        
-
-        if (newHeight > newWidth) newHeight = newWidth;
-
-        let result = await swal({
-            content: (                
-                <iframe id="viewFrame" width={newWidth} height={newHeight}                
-                    allow="autoplay;fullscreen"
-                    src={ `https://www.youtube.com/embed/${youtube_id}?autoplay=1&mute=0&enablejsapi=1` }
-                    frameBorder="0"
-                >
-                </iframe>
-            ),
-            buttons: {}
-        });
-
-        let frame = document.querySelector('#viewFrame');
-        frame.src = '';
+        setYoutubeId(youtube_id);        
     };
 
     let ListItem = ({ name, year, image, genre, youtube_id }) => {
@@ -62,12 +40,13 @@ const ListView = ({ ...rest }) => {
                     return (
                     <ListItem
                         key={index} 
-                        { ...searchResult}
+                        {...searchResult}
                     />);
                 }) : <div></div>
                 // <div>Nothing found :(</div>                    
-            }            
-        </div>);
+            }
+        </div>        
+        );
     };
 
     return getTemplate();

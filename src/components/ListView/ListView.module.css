@@ -2,10 +2,10 @@
     padding-top: 10vh;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 800px) {
     .listItem {
-      width: 100% !important;
-      margin-bottom: 5vh !important;
+        width: 100% !important;
+        margin-bottom: 5vh !important;
     }
 
     .listItem span {
