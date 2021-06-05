@@ -3,7 +3,7 @@ import styles from './YoutubeOverlay.module.css';
 
 const YoutubeOverlay = ({ youtubeId }) => {
 
-    let getYoutubeUrl = id => `https://www.youtube.com/embed/${id}?autoplay=1&amp;mute=0&amp;enablejsapi=1`;
+    let getYoutubeUrl = id => `https://www.youtube.com/embed/${id}?autoplay=1&mute=0&enablejsapi=1`;
     
     let [show, setShow] = useState(false);
     let [initiallyResized, setInitiallyResized] = useState(false);
@@ -58,11 +58,13 @@ const YoutubeOverlay = ({ youtubeId }) => {
 
     let getTemplate = () => {
         let url = youtubeId && getYoutubeUrl(youtubeId);
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
         return (
             <div className={styles.overlay + ' ' + (show && url && styles.load)} onClick={onOverlayClick}>
                 <div className={styles.videoWrapper}>                    
-                    <iframe onLoad={onLoad} width="200" height="100" frameBorder="0" allow="autoplay;fullscreen" src={url}></iframe>
+                    <iframe onLoad={onLoad} width={vw} height={vw} frameBorder="0" allow="autoplay;fullscreen" src={url}></iframe>
                 </div>
             </div>
         );
