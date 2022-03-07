@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import Head from 'next/head'
 import SearchBar from '../src/components/SearchBar';
 import ListView from '../src/components/ListView';
+import Link from 'next/link'
 
 import styles from '../styles/Home.module.css'
 import { SearchProvider } from '../src/components/SearchContext';
@@ -14,7 +15,7 @@ export default function Home() {
   useEffect(() => {
     const movieNames = ['Godzilla', 'The Matrix', 'The Lord of the Rings', 'Star Wars', 'Pulp Fiction', 'Fight Club', 'Indiana Jones'];
     const randomMovieName = movieNames[Math.floor(Math.random() * movieNames.length)]
-  
+
     const searchBarPlaceholder = `Enter movie name (for example "${randomMovieName}")`;
 
     setPlaceholder(searchBarPlaceholder);
@@ -34,7 +35,9 @@ export default function Home() {
 
         <div className={styles.titleWrapper}>
           <h1 className={styles.title}>
-            Similario
+            <Link href="/">
+              Similario
+            </Link>
           </h1>
           <h2 className={styles.subtitle}>
             search similar movies online<sup> (alpha)</sup>
@@ -42,7 +45,7 @@ export default function Home() {
         </div>
 
         <br></br>
-        
+
         <SearchProvider>
           <SearchBar debounce={300} placeholder={placeholder}></SearchBar>
           <OverlayProvider>
@@ -50,7 +53,7 @@ export default function Home() {
             <YoutubeOverlayWithContext />
           </OverlayProvider>
         </SearchProvider>
-       
+
       </main>
     </div>
   )

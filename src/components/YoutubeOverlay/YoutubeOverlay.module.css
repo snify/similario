@@ -1,32 +1,32 @@
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    /* display: flex !important; */
-    align-items: center;
-    justify-content: center;
-    /* opacity: 0; */
-    transition: 0.2s opacity;
-    z-index: 9999;
-    color: white;
-    display: none;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  /* display: flex !important; */
+  align-items: center;
+  justify-content: center;
+  /* opacity: 0; */
+  transition: 0.2s opacity;
+  z-index: 9999;
+  color: white;
+  display: none;
+}
 
-  .videoWrapper {
-    width: 80%;
-    height: 60%;
-    transition: 0.2s all;
-    
-    /* opacity: 0; */
-  }
+.videoWrapper {
+  width: 72%;
+  height: 80%;
+  transition: 0.2s all;
 
-  .videoWrapper {
-    /* transform: scale(0.9); */
-  }
-  
+  /* opacity: 0; */
+}
+
+.videoWrapper {
+  /* transform: scale(0.9); */
+}
+
 @media screen and (max-width: 640px) {
   .videoWrapper {
     width: 100%;
@@ -34,19 +34,19 @@
 }
 
 .unload {
-    opacity: 0;
-    display: none;
+  opacity: 0;
+  display: none;
 }
 
 .load {
-    opacity: 1;
-    display: flex;
+  opacity: 1;
+  display: flex;
 }
 
-.videoWrapper.load  {
-    transform: scale(1.0);
+.videoWrapper.load {
+  transform: scale(1);
 }
 
-.videoWrapper.unload  {
-    transform: scale(0.9);
+.videoWrapper.unload {
+  transform: scale(0.9);
 }

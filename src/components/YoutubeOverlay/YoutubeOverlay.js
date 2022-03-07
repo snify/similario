@@ -1,40 +1,33 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './YoutubeOverlay.module.css';
 
 const YoutubeOverlay = ({ youtubeId }) => {
-
-    let getYoutubeUrl = id => `https://www.youtube.com/embed/${id}?autoplay=1&mute=0&enablejsapi=1`;
-    
-    let [show, setShow] = useState(false);
-    let [initiallyResized, setInitiallyResized] = useState(false);
+    const [show, setShow] = useState(false);
+    const [initiallyResized, setInitiallyResized] = useState(false);
+    const [url, setUrl] = useState('');
+    const [width, setWidth] = useState(0);
 
     useEffect(() => {
-        console.log('YoutubeOverlay loaded');
-        // if (youtubeId) {        
-        //     let youtubeUrl = getYoutubeUrl(youtubeId);
+        if (!youtubeId || !document || !window) return;
 
-        //     console.log('loaded!', youtubeId);
-        //     // setError(false);
-        //     // setShow();
-        //     // setInitiallyResized(false);
+        setUrl(`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=0&enablejsapi=1`);
 
-        //     setUrl(youtubeUrl);
-        // }
-    }, []);
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        setWidth(vw);
+    }, [youtubeId]);
 
-    let onLoad = e => {
-        let iframe = e.target;
-        let wrapper = iframe.parentNode;
-        let overlay = iframe.parentNode;
 
-        console.log('load', youtubeId);
+    const onLoad = e => {
+        const iframe = e.target;
+        const wrapper = iframe.parentNode;
+
         setShow(true);
-        
+
         // set dynamic size
         setInterval(() => {
-            let wrapperHeight = wrapper.clientHeight + 'px';
-            let wrapperWidth = wrapper.clientWidth + 'px';
-            
+            const wrapperHeight = wrapper.clientHeight + 'px';
+            const wrapperWidth = wrapper.clientWidth + 'px';
+
             //overlay.top = document.querySelector('body').scrollTop;
 
             if (iframe.style.height != wrapperHeight) {
@@ -42,35 +35,26 @@ const YoutubeOverlay = ({ youtubeId }) => {
 
                 if (!initiallyResized) setInitiallyResized(true);
             }
-            
+
             if (iframe.style.width != wrapperWidth) {
                 iframe.style.width = wrapperWidth;
 
                 if (!initiallyResized) setInitiallyResized(true);
-            }  
+            }
         }, 50);
     };
 
 
-    let onOverlayClick = () => {
+    const onOverlayClick = () => {
+        setUrl(null);
         setShow(false);
     };
 
-    let getTemplate = () => {
-        let url = youtubeId && getYoutubeUrl(youtubeId);
-        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-
-        return (
-            <div className={styles.overlay + ' ' + (show && url && styles.load)} onClick={onOverlayClick}>
-                <div className={styles.videoWrapper}>                    
-                    <iframe onLoad={onLoad} width={vw} height={vw} frameBorder="0" allow="autoplay;fullscreen" src={url}></iframe>
-                </div>
-            </div>
-        );
-    };
-
-    return getTemplate();
+    return (<div className={styles.overlay + ' ' + (show && url && styles.load)} onClick={onOverlayClick}>
+        <div className={styles.videoWrapper}>
+            {url && <iframe onLoad={onLoad} width={width} height={width} frameBorder="0" allow="autoplay;fullscreen" src={url}></iframe>}
+        </div>
+    </div>);
 };
 
 export default YoutubeOverlay;
